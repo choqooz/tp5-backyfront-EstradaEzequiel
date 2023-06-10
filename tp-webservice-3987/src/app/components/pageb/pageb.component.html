@@ -1,0 +1,74 @@
+<br>
+<!-- TABLA -->
+<div class="row">
+    <div class="col-md-8 d-none d-md-block ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/United-states_flag_icon_round.svg/1024px-United-states_flag_icon_round.svg.png"
+                            height="20" width="20">
+                        USD</th>
+                    <th scope="col"><img src="https://cdn.countryflags.com/thumbs/europe/flag-round-250.png" height="20"
+                            width="20">
+                        EUR</th>
+                    <th scope="col"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/United-kingdom_flag_icon_round.svg/2048px-United-kingdom_flag_icon_round.svg.png"
+                            height="20" width="20">
+                        GBP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">
+                        1 USD <br> Inverse
+                    </th>
+                    <td>1.00000 <br> 1.00000</td>
+                    <td>0.91758 <br> 1.08715</td>
+                    <td>0.84178 <br> 1.21971</td>
+                </tr>
+                <tr>
+                    <th scope="row">EUR <br> Inverse</th>
+                    <td>1.02573 <br> 0.97810</td>
+                    <td>1.00000 <br> 1.00000</td>
+                    <td>0.87108 <br> 1.17007</td>
+                </tr>
+                <tr>
+                    <th scope="row">GBP <br> Inverse</th>
+                    <td>1.25849 <br> 0.82179</td>
+                    <td>1.17816 <br> 0.84710</td>
+                    <td>1.00000 <br> 1.00000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- FORMULARIO -->
+    <div class="col-md-4 col-sm-12">
+        <h6 class="text-center ">Conversor de Divisas</h6>
+        <form>
+            <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input [(ngModel)]="cantidad" type="number" name="cantidad" class="form-control" id="cantidad" placeholder="Cantidad">
+            </div>
+            De
+            <select [(ngModel)]="tengo" class="form-select" id="country1" name="tengo" >
+                <option selected></option>
+                <option value="ARS">ARS Peso Argentino</option>
+                <option value="USD">USD Dolar Ámericano</option>
+                <option value="EUR">EUR Euro</option>
+            </select>
+            <br>
+            A
+            <select [(ngModel)]="quiero" class="form-select" name="quiero">
+                <option selected></option>
+                <option value="ARS">ARS Peso Argentino</option>
+                <option value="USD">USD Dolar Ámericano</option>
+                <option value="EUR">EUR Euro</option>
+            </select>
+            <p *ngIf="resultado">Resultado: {{ resultado }} {{quiero}}</p>
+        </form>
+        <button (click)="convertCurrency()" class="btn btn-primary">Convertir</button>
+    </div>
+    
+</div>
