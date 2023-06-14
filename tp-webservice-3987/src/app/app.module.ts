@@ -10,6 +10,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { ProductoListaComponent } from './components/producto-lista/producto-lista.component';
 import { ProductoFormComponent } from './components/producto-form/producto-form.component';
+import { PagebListaComponent } from './components/pageb-lista/pageb-lista.component';
+import { TicketComponent } from './components/ticket/ticket.component';
+import { FormularioComponent } from './components/ticket-formulario/ticket-formulario.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +21,9 @@ import { ProductoFormComponent } from './components/producto-form/producto-form.
     FooterComponent,
     ProductoListaComponent,
     ProductoFormComponent,
+    PagebListaComponent,
+    TicketComponent,
+    FormularioComponent,
   ],
   imports: [
     BrowserModule,

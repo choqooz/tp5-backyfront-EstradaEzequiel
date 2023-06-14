@@ -22,7 +22,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['pageb']">Convertidor</a></li>
-            <li><a class="dropdown-item">Lista de transacciones</a></li>
+            <li><a class="dropdown-item" [routerLink]="['pageb-lista']">Lista de transacciones</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -30,8 +30,8 @@
             Ticket
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item">Registrar ticket</a></li>
-            <li><a class="dropdown-item">Lista de tickets</a></li>
+            <li><a class="dropdown-item" [routerLink]="['ticket/0']">Registrar ticket</a></li>
+            <li><a class="dropdown-item" [routerLink]="['ticket-formulario']">Lista de tickets</a></li>
           </ul>
         </li>
       </ul>

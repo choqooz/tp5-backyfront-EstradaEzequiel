@@ -1,0 +1,72 @@
+<div class="row">
+  <h3 class="col-12 text-center text-primary text-decoration-underline">Lista de Tickets</h3>
+</div>
+
+<div class="row mb-2">
+  <div class="col-12">
+    <button class="btn btn-primary" (click)="agregarTicket()">Agregar</button>
+  </div>
+</div>
+<table class="table table-striped border border-1">
+  <thead>
+    <tr>
+      <th style="width: 20%">
+        Precio Ticket
+      </th>
+      <th style="width: 30%">
+        Categoria Espectador
+      </th>
+      <th style="width: 10%">
+        Fecha Compra
+      </th>
+      <th style="width: 20%">
+        Espectador
+      </th>
+      <th style="width: 20%">
+        .
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ticket of tickets">
+      <td>{{ticket.precioTicket}}</td>
+      <td>{{ticket.categoriaEspectador}}</td>
+      <td>{{ticket.fechaCompra}}</td>
+      <td>{{ticket.espectador.apellido}}, {{ticket.espectador.nombre}}</td>
+      <td>
+        <button class="btn btn-success" (click)="modificarTicket(ticket)">Modificar</button>
+        <button class="btn btn-danger" (click)="eliminarTicket(ticket)">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="row">
+  <h3 class="col-12 text-center text-primary text-decoration-underline">Espectadores Filtrados</h3>
+</div>
+
+<div class="row mb-2">
+  <div class="col-12">
+    <button class="btn btn-primary" (click)="filtrarPorEspectador('Extranjero')">Extranjeros</button>
+    <button class="btn btn-primary" (click)="filtrarPorEspectador('Local')">Locales</button>
+  </div>
+</div>
+
+<table class="table table-striped border border-1">
+  <thead>
+    <tr>
+      <th style="width: 30%">Apellido</th>
+      <th style="width: 30%">Nombre</th>
+      <th style="width: 30%">DNI</th>
+      <th style="width: 30%">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let espectador of espectadoresFiltrados">
+      <td>{{ espectador.apellido }}</td>
+      <td>{{ espectador.nombre }}</td>
+      <td>{{ espectador.dni }}</td>
+      <td>{{ espectador.email }}</td>
+    </tr>
+  </tbody>
+</table>

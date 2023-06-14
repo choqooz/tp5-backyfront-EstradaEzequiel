@@ -7,6 +7,10 @@ ticketCtrl.getTickets = async (req,res) =>{
     var tickets = await Ticket.find().populate("espectador");
     res.json(tickets)
 }
+ticketCtrl.getTicket = async (req,res) =>{
+  var ticket = await Ticket.findById(req.params.id).populate("espectador");
+  res.json(ticket)
+}
 ticketCtrl.getEspectadoresPorCategoria = async (req, res) => {
     const categoria = req.query.categoria; // Obtener la categoría de la consulta
   
@@ -31,7 +35,6 @@ ticketCtrl.getEspectadoresPorCategoria = async (req, res) => {
       });
     }
   };
-  
 ticketCtrl.createTicket = async (req, res) => {
     console.log(req.body)
     var ticket = new Ticket(req.body);

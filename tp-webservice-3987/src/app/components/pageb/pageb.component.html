@@ -49,10 +49,11 @@
         <form>
             <div class="mb-3">
                 <label for="cantidad" class="form-label">Cantidad</label>
-                <input [(ngModel)]="cantidad" type="number" name="cantidad" class="form-control" id="cantidad" placeholder="Cantidad">
+                <input [(ngModel)]="cantidad" type="number" name="cantidad" class="form-control" id="cantidad"
+                    placeholder="Cantidad">
             </div>
             De
-            <select [(ngModel)]="tengo" class="form-select" id="country1" name="tengo" >
+            <select [(ngModel)]="tengo" class="form-select" id="country1" name="tengo">
                 <option selected></option>
                 <option value="ARS">ARS Peso Argentino</option>
                 <option value="USD">USD Dolar Ámericano</option>
@@ -68,7 +69,7 @@
             </select>
             <p *ngIf="resultado">Resultado: {{ resultado }} {{quiero}}</p>
         </form>
-        <button (click)="convertCurrency()" class="btn btn-primary">Convertir</button>
+        <button (click)="convertirMoneda()" class="btn btn-primary">Convertir</button>
+        <button *ngIf="mostrarBoton" class="btn btn-primary" (click)="guardarTransaccion()">Guardar transacción</button>
     </div>
-    
 </div>

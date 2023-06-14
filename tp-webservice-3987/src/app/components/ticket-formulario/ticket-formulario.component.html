@@ -1,0 +1,32 @@
+<div class="container">
+    <form>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio Ticket</label>
+            <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="ticket.precioTicket" />
+        </div>
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo Expectador</label>
+            <select class="form-select" id="tipo" name="tipo" [(ngModel)]="ticket.categoriaEspectador">
+                <option selected value="n">Seleccione Opcion</option>
+                <option value="Extranjero">Extranjero</option>
+                <option value="Local">Local</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha Compra</label>
+            <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="ticket.fechaCompra" />
+        </div>
+        <div class="mb-3">
+            <label for="idespectador" class="form-label">Espectador</label>
+            <select class="form-select" name="espectador" [(ngModel)]="ticket.espectador">
+
+                <option *ngFor="let espectador of espectadores" [ngValue]="espectador">{{espectador.apellido}},
+                    {{espectador.nombre}}</option>
+
+            </select>
+        </div>
+        <button *ngIf="accion=='update'" type="submit" class="btn btn-primary"
+            (click)="actualizarTicket()">Modificar</button>
+        <button *ngIf="accion=='new'" type="submit" class="btn btn-primary" (click)="guardarTicket()">Guardar</button>
+    </form>
+</div>
