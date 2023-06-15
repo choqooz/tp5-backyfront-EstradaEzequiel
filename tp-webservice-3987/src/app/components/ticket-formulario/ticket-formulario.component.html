@@ -1,32 +1,54 @@
 <div class="container">
-    <form>
+    <form (ngSubmit)="guardarTicket()" #ticketForm="ngForm">
         <div class="mb-3">
             <label for="precio" class="form-label">Precio Ticket</label>
-            <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="ticket.precioTicket" />
+            <input type="number" class="form-control" id="precio" name="precio" [(ngModel)]="ticket.precioTicket"
+                required min="0">
+            <div *ngIf="ticketForm.controls['precio'].invalid && (ticketForm.controls['precio'].dirty || ticketForm.controls['precio'].touched)"
+                class="text-danger">
+                <div *ngIf="ticketForm.controls['precio'].errors?.['required']">
+                    Precio es requerido.
+                </div>
+                <div *ngIf="ticketForm.controls['precio'].errors?.['min']">
+                    Precio debe ser mayor o igual a 0.
+                </div>
+            </div>
         </div>
         <div class="mb-3">
             <label for="tipo" class="form-label">Tipo Expectador</label>
-            <select class="form-select" id="tipo" name="tipo" [(ngModel)]="ticket.categoriaEspectador">
-                <option selected value="n">Seleccione Opcion</option>
+            <select class="form-select" id="tipo" name="tipo" [(ngModel)]="ticket.categoriaEspectador" required>
+                <option disabled selected value="n">Seleccione Opcion</option>
                 <option value="Extranjero">Extranjero</option>
                 <option value="Local">Local</option>
             </select>
+            <div *ngIf="ticketForm.controls['tipo'].invalid && (ticketForm.controls['tipo'].dirty || ticketForm.controls['tipo'].touched)"
+                class="text-danger">
+                Tipo Expectador es requerido.
+            </div>
         </div>
         <div class="mb-3">
             <label for="fecha" class="form-label">Fecha Compra</label>
-            <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="ticket.fechaCompra" />
+            <input type="text" class="form-control" id="fecha" name="fecha" [(ngModel)]="ticket.fechaCompra" required>
+            <div *ngIf="ticketForm.controls['fecha'].invalid && (ticketForm.controls['fecha'].dirty || ticketForm.controls['fecha'].touched)"
+                class="text-danger">
+                Fecha Compra es requerida.
+            </div>
         </div>
         <div class="mb-3">
             <label for="idespectador" class="form-label">Espectador</label>
-            <select class="form-select" name="espectador" [(ngModel)]="ticket.espectador">
-
+            <select class="form-select" name="espectador" [(ngModel)]="ticket.espectador" required>
+                <option disabled selected value="">Seleccione Espectador</option>
                 <option *ngFor="let espectador of espectadores" [ngValue]="espectador">{{espectador.apellido}},
                     {{espectador.nombre}}</option>
-
             </select>
+            <div *ngIf="ticketForm.controls['espectador'].invalid && (ticketForm.controls['espectador'].dirty || ticketForm.controls['espectador'].touched)"
+                class="text-danger">
+                Espectador es requerido.
+            </div>
         </div>
         <button *ngIf="accion=='update'" type="submit" class="btn btn-primary"
-            (click)="actualizarTicket()">Modificar</button>
-        <button *ngIf="accion=='new'" type="submit" class="btn btn-primary" (click)="guardarTicket()">Guardar</button>
+            [disabled]="!ticketForm.valid">Modificar</button>
+        <button *ngIf="accion=='new'" type="submit" class="btn btn-primary"
+            [disabled]="!ticketForm.valid">Guardar</button>
     </form>
 </div>
