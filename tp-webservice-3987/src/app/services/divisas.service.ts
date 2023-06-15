@@ -31,16 +31,16 @@ export class DivisasService {
     };
     return this._http.post('http://localhost:3000/api/transaccion/', transaccion, httpOptions);
   }
-  getTransacciones(): Observable<any[]> {
-    return this._http.get<any[]>('http://localhost:3000/api/transaccion/');
+  getTransacciones(): Observable<any> {
+    return this._http.get('http://localhost:3000/api/transaccion/');
   }
 
-  getTransaccionesPorDivisas(monedaOrigen: string, monedaDestino: string): Observable<any[]> {
+  getTransaccionesPorDivisas(monedaOrigen: string, monedaDestino: string): Observable<any> {
     const params = new HttpParams()
       .set('monedaOrigen', monedaOrigen)
       .set('monedaDestino', monedaDestino);
 
-    return this._http.get<any[]>('http://localhost:3000/api/transaccion/divisas/', { params });
+    return this._http.get('http://localhost:3000/api/transaccion/divisas/', { params });
   }
 
 }

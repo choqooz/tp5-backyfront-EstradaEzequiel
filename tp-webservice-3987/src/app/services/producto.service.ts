@@ -5,15 +5,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ProductoService {
-  private baseUrl = 'http://localhost:3000/api/producto';
+  private URL = 'http://localhost:3000/api/producto';
 
   constructor(private http: HttpClient) { }
 
   getProductos() {
-    return this.http.get<any[]>(this.baseUrl);
+    return this.http.get(this.URL);
   }
 
   createProducto(producto: any) {
-    return this.http.post(this.baseUrl, producto);
+    return this.http.post(this.URL, producto);
   }
 }

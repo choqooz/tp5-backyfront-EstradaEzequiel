@@ -7,7 +7,7 @@ productoCtrl.getProductos = async (req, res) => {
     criteria.destacado = req.query.destacado; 
     }
 
-    var productos = await Producto.find(criteria);
+    var productos = await Producto.find({destacado: true});
     res.json(productos);
 }
 productoCtrl.createProducto = async (req, res) => {

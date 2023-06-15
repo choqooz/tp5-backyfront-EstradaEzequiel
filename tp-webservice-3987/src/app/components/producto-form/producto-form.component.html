@@ -4,66 +4,60 @@
         <label for="nombre">Nombre:</label>
         <input type="text" [(ngModel)]="producto.nombre" name="nombre" id="nombre" class="form-control" required
             minlength="3">
-        <div *ngIf="productoForm.controls['nombre'].invalid && (productoForm.controls['nombre'].dirty || productoForm.controls['nombre'].touched)"
+        <div *ngIf="productoForm.controls['nombre']?.errors?.['required'] && (productoForm.controls['nombre']?.dirty || productoForm.controls['nombre']?.touched)"
             class="text-danger">
-            <div *ngIf="productoForm.controls['nombre'].errors?.['required']">
-                Nombre es requerido.
-            </div>
-            <div *ngIf="productoForm.controls['nombre'].errors?.['minlength']">
-                Nombre debe tener al menos 3 caracteres.
-            </div>
+            Nombre es requerido.
+        </div>
+        <div *ngIf="productoForm.controls['nombre']?.errors?.['minlength'] && (productoForm.controls['nombre']?.dirty || productoForm.controls['nombre']?.touched)"
+            class="text-danger">
+            Nombre debe tener al menos 3 caracteres.
         </div>
     </div>
     <div class="form-group">
         <label for="descripcion">Descripción:</label>
         <input type="text" [(ngModel)]="producto.descripcion" name="descripcion" id="descripcion" class="form-control"
             required>
-        <div *ngIf="productoForm.controls['descripcion'].invalid && (productoForm.controls['descripcion'].dirty || productoForm.controls['descripcion'].touched)"
+        <div *ngIf="productoForm.controls['descripcion']?.errors?.['required'] && (productoForm.controls['descripcion']?.dirty || productoForm.controls['descripcion']?.touched)"
             class="text-danger">
-            <div *ngIf="productoForm.controls['descripcion'].errors?.['required']">
-                Descripción es requerida.
-            </div>
+            Descripción es requerida.
         </div>
     </div>
     <div class="form-group">
         <label for="imagen">Imagen:</label>
         <input type="text" [(ngModel)]="producto.imagen" name="imagen" id="imagen" class="form-control" required>
-        <div *ngIf="productoForm.controls['imagen'].invalid && (productoForm.controls['imagen'].dirty || productoForm.controls['imagen'].touched)"
+        <div *ngIf="productoForm.controls['imagen']?.errors?.['required'] && (productoForm.controls['imagen']?.dirty || productoForm.controls['imagen']?.touched)"
             class="text-danger">
-            <div *ngIf="productoForm.controls['imagen'].errors?.['required']">
-                Imagen es requerida.
-            </div>
+            Imagen es requerida.
         </div>
     </div>
     <div class="form-group">
         <label for="precio">Precio:</label>
         <input type="number" [(ngModel)]="producto.precio" name="precio" id="precio" class="form-control" required
             min="0">
-        <div *ngIf="productoForm.controls['precio'].invalid && (productoForm.controls['precio'].dirty || productoForm.controls['precio'].touched)"
+        <div *ngIf="productoForm.controls['precio']?.errors?.['required'] && (productoForm.controls['precio']?.dirty || productoForm.controls['precio']?.touched)"
             class="text-danger">
-            <div *ngIf="productoForm.controls['precio'].errors?.['required']">
-                Precio es requerido.
-            </div>
-            <div *ngIf="productoForm.controls['precio'].errors?.['min']">
-                Precio debe ser mayor o igual a 0.
-            </div>
+            Precio es requerido.
+        </div>
+        <div *ngIf="productoForm.controls['precio']?.errors?.['min'] && (productoForm.controls['precio']?.dirty || productoForm.controls['precio']?.touched)"
+            class="text-danger">
+            Precio debe ser mayor o igual a 0.
         </div>
     </div>
     <div class="form-group">
         <label for="stock">Stock:</label>
         <input type="number" [(ngModel)]="producto.stock" name="stock" id="stock" class="form-control" required min="0"
-            [max]="1000">
-        <div *ngIf="productoForm.controls['stock'].invalid && (productoForm.controls['stock'].dirty || productoForm.controls['stock'].touched)"
+            max="1000">
+        <div *ngIf="productoForm.controls['stock']?.errors?.['required'] && (productoForm.controls['stock']?.dirty || productoForm.controls['stock']?.touched)"
             class="text-danger">
-            <div *ngIf="productoForm.controls['stock'].errors?.['required']">
-                Stock es requerido.
-            </div>
-            <div *ngIf="productoForm.controls['stock'].errors?.['min']">
-                Stock debe ser mayor o igual a 0.
-            </div>
-            <div *ngIf="productoForm.controls['stock'].errors?.['max']">
-                Stock no puede ser mayor a 1000.
-            </div>
+            Stock es requerido.
+        </div>
+        <div *ngIf="productoForm.controls['stock']?.errors?.['min'] && (productoForm.controls['stock']?.dirty || productoForm.controls['stock']?.touched)"
+            class="text-danger">
+            Stock debe ser mayor o igual a 0.
+        </div>
+        <div *ngIf="productoForm.controls['stock']?.errors?.['max'] && (productoForm.controls['stock']?.dirty || productoForm.controls['stock']?.touched)"
+            class="text-danger">
+            Stock no puede ser mayor a 1000.
         </div>
     </div>
     <div class="form-group form-check">
@@ -71,5 +65,5 @@
             class="form-check-input">
         <label for="destacado" class="form-check-label">Destacado</label>
     </div>
-    <button type="submit" [disabled]="!productoForm.valid" class="btn btn-primary">Crear Producto</button>
+    <button type="submit" [disabled]="!productoForm.form.valid" class="btn btn-primary">Crear Producto</button>
 </form>
